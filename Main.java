@@ -1,15 +1,15 @@
-class Main extends Thread {
-    public void run() {
-        System.out.println("task one");
-    }
+public class Main {
     public static void main(String[] args) {
-        Main t1 = new Main();
-        Main t2 = new Main();
-        Main t3 = new Main();
+        RollNumberTable rollNumberTable = new RollNumberTable();
+        DateOfBirthTable dateOfBirthTable = new DateOfBirthTable();
         
-        t1.start();
-        t2.start();
-        t3.start();
+        rollNumberTable.start();
+        try {
+            rollNumberTable.join();  // Wait for RollNumberTable to finish
+        } catch (InterruptedException e) {
+            System.out.println(e);
+        }
+        
+        dateOfBirthTable.start();
     }
 }
-
