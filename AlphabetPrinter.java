@@ -1,13 +1,10 @@
 package Lab5;
-
 import java.util.Random;
 class PrintAlphabetThread extends Thread {
     private char characterToPrint;
-    
     public PrintAlphabetThread(char character) {
         this.characterToPrint = character;
     }
-    
     @Override
     public void run() {
         try {
@@ -26,13 +23,10 @@ class PrintAlphabetThread extends Thread {
     }
 }
 public class AlphabetPrinter {
-
 	public static void main(String[] args) {
 		for (char ch = 'A'; ch <= 'Z'; ch++) {
-            
             PrintAlphabetThread thread = new PrintAlphabetThread(ch);
             thread.start();
-            
             try {
                 thread.join();
             } catch (InterruptedException e) {
